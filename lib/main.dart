@@ -13,8 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: HomeScreen(),
-      theme:
-          ThemeData(appBarTheme: AppBarTheme(backgroundColor: Colors.black87)),
+      theme: ThemeData(
+          appBarTheme: AppBarTheme(backgroundColor: Colors.black87),
+          textTheme:
+              const TextTheme(subtitle1: const TextStyle(color: Colors.white))),
     );
   }
 }

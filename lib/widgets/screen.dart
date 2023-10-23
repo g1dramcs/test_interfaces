@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  final textStyle = const TextStyle(fontSize: 16, color: Colors.white38);
+  final textStyle = const TextStyle(fontSize: 16, color: Colors.white);
+  final textFieldDecorator = const InputDecoration(
+      enabledBorder:
+          OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+      fillColor: Colors.white,
+      labelStyle: TextStyle(color: Colors.white));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Center(child: Text("Login to VK")),
+        title: Center(child: Text("Login to your account")),
       ),
       body: Center(
         child: Padding(
@@ -19,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               SizedBox(height: 20),
               Text(
-                "Sign in to VK",
+                "Sign in",
                 style: TextStyle(fontSize: 21, color: Colors.white),
               ),
               SizedBox(height: 10),
@@ -28,25 +33,15 @@ class HomeScreen extends StatelessWidget {
                 style: textStyle,
               ),
               SizedBox(height: 25),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white)),
-                    fillColor: Colors.white,
-                    labelText: "Phone or Email",
-                    labelStyle: TextStyle(color: Colors.white)),
-              ),
+              TextFormField(obscureText: true, decoration: textFieldDecorator),
               SizedBox(height: 10),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white)),
-                    fillColor: Colors.white,
-                    labelText: "Password",
-                    labelStyle: TextStyle(color: Colors.white)),
+              Text(
+                "data",
+                style: textStyle,
               ),
+              TextFormField(
+                  style: TextStyle(color: Colors.white),
+                  decoration: textFieldDecorator),
               SizedBox(height: 20),
               Container(
                 width: double.infinity,
