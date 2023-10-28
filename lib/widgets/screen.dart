@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final _emailcontroller = TextEditingController();
+  final _passwordcontroller = TextEditingController();
+  String? errorText = null;
+
+  void _auth() {
+    final login = _emailcontroller.text;
+    final password = _passwordcontroller.text;
+    if (login == "admin" && password == "admin") {
+      errorText = null;
+    } else {
+      errorText = "Лох, ошибся. *(Джейсон Стэтхем)";
+    }
+
+    setState(() {});
+  }
+
   final textStyle = const TextStyle(fontSize: 16, color: Colors.white);
+
   final textFieldDecorator = const InputDecoration(
       enabledBorder:
           OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
@@ -33,13 +55,34 @@ class HomeScreen extends StatelessWidget {
                 style: textStyle,
               ),
               SizedBox(height: 25),
-              TextFormField(obscureText: true, decoration: textFieldDecorator),
-              SizedBox(height: 10),
-              Text(
-                "data",
-                style: textStyle,
+              if (errorText != null)
+                Text(
+                  errorText!,
+                  style: TextStyle(color: Colors.red),
+                ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  "Email or Phone",
+                  style: textStyle,
+                ),
               ),
-              TextFormField(
+              TextField(
+                controller: _emailcontroller,
+                obscureText: false,
+                decoration: textFieldDecorator,
+              ),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  "Password",
+                  style: textStyle,
+                ),
+              ),
+              TextField(
+                  controller: _passwordcontroller,
+                  obscureText: true,
                   style: TextStyle(color: Colors.white),
                   decoration: textFieldDecorator),
               SizedBox(height: 20),
@@ -49,7 +92,9 @@ class HomeScreen extends StatelessWidget {
                 child: ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.white)),
-                  onPressed: () {},
+                  onPressed: () {
+                    _auth();
+                  },
                   child: Text(
                     "Login",
                     style: TextStyle(color: Colors.black54, fontSize: 20),
