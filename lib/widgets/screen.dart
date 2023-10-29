@@ -17,6 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
     final password = _passwordcontroller.text;
     if (login == "admin" && password == "admin") {
       errorText = null;
+
+      Navigator.pushNamed(context, '/next');
     } else {
       errorText = "Лох, ошибся. *(Джейсон Стэтхем)";
     }
